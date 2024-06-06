@@ -1,0 +1,4 @@
+name: ModularMob
+version: '${project.version}'
+main: me.hsgamer.modularmob.ModularMob
+api-version: '1.13'
