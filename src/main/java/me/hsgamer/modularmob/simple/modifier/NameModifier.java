@@ -6,8 +6,8 @@ import org.bukkit.entity.Entity;
 public class NameModifier implements MobModifier {
     private final String name;
 
-    public NameModifier(String name) {
-        this.name = name;
+    public NameModifier(Object value) {
+        this.name = String.valueOf(value);
     }
 
     @Override
