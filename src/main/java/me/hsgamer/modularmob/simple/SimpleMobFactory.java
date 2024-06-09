@@ -29,7 +29,7 @@ public class SimpleMobFactory implements MobFactory {
         for (Map.Entry<PathString, Object> entry : config.getNormalizedValues(false).entrySet()) {
             String key = PathString.toPath(entry.getKey());
             Object value = entry.getValue();
-            if (key.equalsIgnoreCase("type")) {
+            if (key.equalsIgnoreCase("entity")) {
                 type = Objects.toString(value, "");
             } else {
                 mobModifierBuilder.build(key, new MobModifierBuilder.Input(name, value)).ifPresent(modifiers::add);
@@ -70,7 +70,7 @@ public class SimpleMobFactory implements MobFactory {
 
     @Override
     public void modify(Entity entity) {
-        if (entityType != null && !Objects.equals(entity.getType(), entityType)) return;
+        if (entityType != null && entity.getType() != entityType) return;
         mobModifiers.forEach(modifier -> modifier.modify(entity));
     }
 }
