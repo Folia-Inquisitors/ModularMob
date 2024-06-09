@@ -16,16 +16,16 @@ import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.CreatureSpawnEvent;
 
-import java.util.Locale;
-import java.util.Objects;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.Consumer;
 
 public class NaturalMobSpawner implements MobSpawner, Listener {
     private static final PathString ENTITY_PATH = new PathString("entity");
     private static final PathString CHANCE_PATH = new PathString("chance");
+    private static final PathString REASON_PATH = new PathString("reason");
     private final ModularMob plugin;
     private final EntityType entityType;
+    private final List<CreatureSpawnEvent.SpawnReason> reasons;
     private final ProbabilityCollection<Consumer<Entity>> spawnerChances;
 
     public NaturalMobSpawner(ModularMob plugin, Config config) {
@@ -73,13 +73,22 @@ public class NaturalMobSpawner implements MobSpawner, Listener {
                 spawnerChances.add(consumer, chance);
             }
         }
+
+        this.reasons = new ArrayList<>();
+        for (String reason : CollectionUtils.createStringListFromObject(config.getNormalized(REASON_PATH))) {
+            try {
+                reasons.add(CreatureSpawnEvent.SpawnReason.valueOf(reason.toUpperCase(Locale.ROOT).trim()));
+            } catch (IllegalArgumentException e) {
+                plugin.getLogger().warning("Invalid reason: " + reason);
+            }
+        }
     }
 
     @EventHandler
     public void onEntitySpawn(CreatureSpawnEvent event) {
         if (entityType == null) return;
-        if (event.getSpawnReason() != CreatureSpawnEvent.SpawnReason.NATURAL) return;
         if (event.getEntityType() != entityType) return;
+        if (!reasons.isEmpty() && !reasons.contains(event.getSpawnReason())) return;
         spawnerChances.get().accept(event.getEntity());
     }
 
