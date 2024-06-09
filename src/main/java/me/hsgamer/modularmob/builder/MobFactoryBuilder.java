@@ -8,7 +8,7 @@ import me.hsgamer.modularmob.api.MobFactory;
 import me.hsgamer.modularmob.simple.SimpleMobFactory;
 
 public class MobFactoryBuilder extends FunctionalMassBuilder<MobFactoryBuilder.Input, MobFactory> {
-    private static final PathString TYPE = new PathString("factory", null);
+    private static final PathString TYPE = new PathString("type", null);
 
     public MobFactoryBuilder(ModularMob plugin) {
         register(input -> new SimpleMobFactory(plugin, input), "simple");
