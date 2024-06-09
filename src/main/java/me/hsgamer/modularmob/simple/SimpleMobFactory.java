@@ -2,6 +2,7 @@ package me.hsgamer.modularmob.simple;
 
 import me.hsgamer.hscore.config.Config;
 import me.hsgamer.hscore.config.PathString;
+import me.hsgamer.modularmob.ModularMob;
 import me.hsgamer.modularmob.api.MobFactory;
 import me.hsgamer.modularmob.api.MobModifier;
 import me.hsgamer.modularmob.builder.MobModifierBuilder;
@@ -16,7 +17,8 @@ public class SimpleMobFactory implements MobFactory {
     private final EntityType entityType;
     private final List<MobModifier> mobModifiers;
 
-    public SimpleMobFactory(Config config) {
+    public SimpleMobFactory(ModularMob plugin, Config config) {
+        MobModifierBuilder mobModifierBuilder = plugin.get(MobModifierBuilder.class);
         String type = "";
         List<MobModifier> modifiers = new ArrayList<>();
         for (Map.Entry<PathString, Object> entry : config.getNormalizedValues(false).entrySet()) {
@@ -25,7 +27,7 @@ public class SimpleMobFactory implements MobFactory {
             if (key.equalsIgnoreCase("type")) {
                 type = Objects.toString(value, "");
             } else {
-                MobModifierBuilder.INSTANCE.build(key, value).ifPresent(modifiers::add);
+                mobModifierBuilder.build(key, value).ifPresent(modifiers::add);
             }
         }
 

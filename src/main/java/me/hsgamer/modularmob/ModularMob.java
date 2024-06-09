@@ -1,17 +1,18 @@
 package me.hsgamer.modularmob;
 
-import org.bukkit.plugin.java.JavaPlugin;
+import io.github.projectunified.minelib.plugin.base.BasePlugin;
+import me.hsgamer.modularmob.builder.MobFactoryBuilder;
+import me.hsgamer.modularmob.builder.MobModifierBuilder;
 
-public final class ModularMob extends JavaPlugin {
+import java.util.Arrays;
+import java.util.List;
 
+public final class ModularMob extends BasePlugin {
     @Override
-    public void onEnable() {
-        // Plugin startup logic
-
-    }
-
-    @Override
-    public void onDisable() {
-        // Plugin shutdown logic
+    protected List<Object> getComponents() {
+        return Arrays.asList(
+                new MobFactoryBuilder(this),
+                new MobModifierBuilder(this)
+        );
     }
 }
