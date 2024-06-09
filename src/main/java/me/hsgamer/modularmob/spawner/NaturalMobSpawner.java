@@ -14,7 +14,7 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.HandlerList;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntitySpawnEvent;
+import org.bukkit.event.entity.CreatureSpawnEvent;
 
 import java.util.Locale;
 import java.util.Objects;
@@ -76,8 +76,9 @@ public class NaturalMobSpawner implements MobSpawner, Listener {
     }
 
     @EventHandler
-    public void onEntitySpawn(EntitySpawnEvent event) {
+    public void onEntitySpawn(CreatureSpawnEvent event) {
         if (entityType == null) return;
+        if (event.getSpawnReason() != CreatureSpawnEvent.SpawnReason.NATURAL) return;
         if (event.getEntityType() != entityType) return;
         spawnerChances.get().accept(event.getEntity());
     }
