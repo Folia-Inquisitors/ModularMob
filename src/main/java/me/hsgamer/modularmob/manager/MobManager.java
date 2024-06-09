@@ -30,13 +30,17 @@ public class MobManager implements Loadable {
                 BukkitConfig config = new BukkitConfig(file);
                 config.setup();
                 String name = config.getName();
-                mobFactoryBuilder.build(new MobFactoryBuilder.Input(name, config)).ifPresent(mobFactory -> mobFactoryMap.put(name, mobFactory));
+                mobFactoryBuilder.build(new MobFactoryBuilder.Input(name, config)).ifPresent(mobFactory -> {
+                    mobFactory.enable();
+                    mobFactoryMap.put(name, mobFactory);
+                });
             }
         }
     }
 
     @Override
     public void disable() {
+        mobFactoryMap.values().forEach(MobFactory::disable);
         mobFactoryMap.clear();
     }
 
