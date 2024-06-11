@@ -1,21 +1,16 @@
 package me.hsgamer.modularmob.simple.modifier;
 
-import me.hsgamer.hscore.bukkit.utils.ColorUtils;
-import me.hsgamer.modularmob.api.MobModifier;
+import me.hsgamer.modularmob.api.abstraction.StringMobModifier;
 import org.bukkit.entity.Entity;
 
-import java.util.Objects;
-
-public class NameModifier implements MobModifier {
-    private final String name;
-
+public class NameModifier extends StringMobModifier {
     public NameModifier(Object value) {
-        this.name = ColorUtils.colorize(Objects.toString(value));
+        super(value);
     }
 
     @Override
     public void modify(Entity entity) {
-        entity.setCustomName(name);
+        entity.setCustomName(value);
         entity.setCustomNameVisible(true);
     }
 }

@@ -1,5 +1,6 @@
-package me.hsgamer.modularmob.api;
+package me.hsgamer.modularmob.api.abstraction;
 
+import me.hsgamer.modularmob.api.MobModifier;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 
