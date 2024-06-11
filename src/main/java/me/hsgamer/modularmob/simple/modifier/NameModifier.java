@@ -1,5 +1,6 @@
 package me.hsgamer.modularmob.simple.modifier;
 
+import me.hsgamer.hscore.bukkit.utils.ColorUtils;
 import me.hsgamer.modularmob.api.abstraction.StringMobModifier;
 import org.bukkit.entity.Entity;
 
@@ -10,7 +11,7 @@ public class NameModifier extends StringMobModifier {
 
     @Override
     public void modify(Entity entity) {
-        entity.setCustomName(value);
+        entity.setCustomName(ColorUtils.colorize(value));
         entity.setCustomNameVisible(true);
     }
 }
