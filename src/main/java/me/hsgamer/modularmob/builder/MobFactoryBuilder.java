@@ -6,12 +6,14 @@ import me.hsgamer.hscore.config.PathString;
 import me.hsgamer.modularmob.ModularMob;
 import me.hsgamer.modularmob.api.MobFactory;
 import me.hsgamer.modularmob.simple.SimpleMobFactory;
+import me.hsgamer.modularmob.simple.XMobFactory;
 
 public class MobFactoryBuilder extends FunctionalMassBuilder<MobFactoryBuilder.Input, MobFactory> {
     private static final PathString TYPE = new PathString("type", null);
 
     public MobFactoryBuilder(ModularMob plugin) {
         register(input -> new SimpleMobFactory(plugin, input), "simple");
+        register(XMobFactory::new, "xmob");
     }
 
     @Override
