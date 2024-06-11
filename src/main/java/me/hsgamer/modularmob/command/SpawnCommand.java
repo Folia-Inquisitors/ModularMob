@@ -51,8 +51,11 @@ public class SpawnCommand extends Command {
         MobFactory mobFactory = optionalMobFactory.get();
 
         LocationScheduler.get(plugin, location).run(() -> {
-            mobFactory.spawn(location);
-            sender.sendMessage("The mob is spawned");
+            if (mobFactory.spawn(location).isPresent()) {
+                sender.sendMessage("The mob is spawned");
+            } else {
+                sender.sendMessage("Failed to spawn the mob");
+            }
         });
         return true;
     }
