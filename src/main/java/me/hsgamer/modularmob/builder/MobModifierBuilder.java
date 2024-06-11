@@ -13,6 +13,7 @@ public class MobModifierBuilder extends Builder<MobModifierBuilder.Input, MobMod
         register(input -> new GravityModifier(input.value), "gravity");
         register(input -> new InvulnerableModifier(input.value), "invulnerable");
         register(input -> new SilentModifier(input.value), "silent");
+        register(input -> new XMobModifier(input.value), "xmob", "xentity", "x");
     }
 
     public static final class Input {
