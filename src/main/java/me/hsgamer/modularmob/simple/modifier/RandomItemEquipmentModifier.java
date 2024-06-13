@@ -29,7 +29,7 @@ public class RandomItemEquipmentModifier extends RandomListMobModifier<Map<Strin
 
     @Override
     protected int getChance(Map<String, Object> rawValue) {
-        return Validate.getNumber(Objects.toString(rawValue.get("chance"))).map(Number::intValue).orElse(0);
+        return Validate.getNumber(Objects.toString(rawValue.get("chance"))).map(Number::intValue).orElse(1);
     }
 
     @Override
