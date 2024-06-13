@@ -1,4 +1,4 @@
-package me.hsgamer.modularmob.simple;
+package me.hsgamer.modularmob.factory;
 
 import me.hsgamer.hscore.config.Config;
 import me.hsgamer.hscore.config.PathString;

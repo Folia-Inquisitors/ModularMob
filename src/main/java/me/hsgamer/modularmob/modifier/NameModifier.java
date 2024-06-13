@@ -1,4 +1,4 @@
-package me.hsgamer.modularmob.simple.modifier;
+package me.hsgamer.modularmob.modifier;
 
 import me.hsgamer.hscore.bukkit.utils.ColorUtils;
 import me.hsgamer.modularmob.api.abstraction.StringMobModifier;

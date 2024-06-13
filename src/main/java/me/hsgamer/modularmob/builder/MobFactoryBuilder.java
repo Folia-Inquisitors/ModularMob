@@ -5,8 +5,8 @@ import me.hsgamer.hscore.config.Config;
 import me.hsgamer.hscore.config.PathString;
 import me.hsgamer.modularmob.ModularMob;
 import me.hsgamer.modularmob.api.MobFactory;
-import me.hsgamer.modularmob.simple.SimpleMobFactory;
-import me.hsgamer.modularmob.simple.XMobFactory;
+import me.hsgamer.modularmob.factory.SimpleMobFactory;
+import me.hsgamer.modularmob.factory.XMobFactory;
 
 public class MobFactoryBuilder extends FunctionalMassBuilder<MobFactoryBuilder.Input, MobFactory> {
     private static final PathString TYPE = new PathString("type", null);

@@ -3,7 +3,7 @@ package me.hsgamer.modularmob.builder;
 import me.hsgamer.hscore.builder.Builder;
 import me.hsgamer.modularmob.ModularMob;
 import me.hsgamer.modularmob.api.MobModifier;
-import me.hsgamer.modularmob.simple.modifier.*;
+import me.hsgamer.modularmob.modifier.*;
 
 public class MobModifierBuilder extends Builder<MobModifierBuilder.Input, MobModifier> {
     public MobModifierBuilder(ModularMob plugin) {

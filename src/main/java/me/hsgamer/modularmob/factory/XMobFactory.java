@@ -1,8 +1,8 @@
-package me.hsgamer.modularmob.simple;
+package me.hsgamer.modularmob.factory;
 
 import me.hsgamer.modularmob.api.abstraction.BaseMobFactory;
 import me.hsgamer.modularmob.builder.MobFactoryBuilder;
-import me.hsgamer.modularmob.simple.modifier.XMobModifier;
+import me.hsgamer.modularmob.modifier.XMobModifier;
 import org.bukkit.entity.Entity;
 
 public class XMobFactory extends BaseMobFactory {

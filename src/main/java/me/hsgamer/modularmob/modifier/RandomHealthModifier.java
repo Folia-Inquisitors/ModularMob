@@ -1,4 +1,4 @@
-package me.hsgamer.modularmob.simple.modifier;
+package me.hsgamer.modularmob.modifier;
 
 import me.hsgamer.modularmob.api.abstraction.LivingMobModifier;
 import me.hsgamer.modularmob.api.abstraction.RandomNumberMobModifier;

@@ -1,4 +1,4 @@
-package me.hsgamer.modularmob.simple.modifier;
+package me.hsgamer.modularmob.modifier;
 
 import com.cryptomorin.xseries.XEntity;
 import me.hsgamer.hscore.common.MapUtils;
