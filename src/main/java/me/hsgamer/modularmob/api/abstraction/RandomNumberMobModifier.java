@@ -28,7 +28,7 @@ public abstract class RandomNumberMobModifier implements MobModifier {
         }
     }
 
-    protected Number getRandomValue() {
+    protected Number getValue() {
         return ThreadLocalRandom.current().nextDouble(min, max);
     }
 }

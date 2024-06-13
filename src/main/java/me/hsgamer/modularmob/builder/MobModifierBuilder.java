@@ -14,32 +14,36 @@ public class MobModifierBuilder extends Builder<MobModifierBuilder.Input, MobMod
         register(input -> new InvulnerableModifier(input.value), "invulnerable");
         register(input -> new SilentModifier(input.value), "silent");
         register(input -> new XMobModifier(input.value), "xmob", "xentity", "x");
+        register(input -> new FlySpeedModifier(input.value), "fly-speed");
+        register(input -> new WalkSpeedModifier(input.value), "walk-speed");
 
         register(input -> new RandomHealthModifier(input.value), "random-health");
         register(input -> new RandomItemEquipmentModifier(input.value, (itemChance, equipment) -> {
-                equipment.setHelmet(itemChance.getItem());
-                equipment.setHelmetDropChance(itemChance.getDropChance());
+            equipment.setHelmet(itemChance.getItem());
+            equipment.setHelmetDropChance(itemChance.getDropChance());
         }), "random-helmet");
         register(input -> new RandomItemEquipmentModifier(input.value, (itemChance, equipment) -> {
-                equipment.setChestplate(itemChance.getItem());
-                equipment.setChestplateDropChance(itemChance.getDropChance());
+            equipment.setChestplate(itemChance.getItem());
+            equipment.setChestplateDropChance(itemChance.getDropChance());
         }), "random-chestplate");
         register(input -> new RandomItemEquipmentModifier(input.value, (itemChance, equipment) -> {
-                equipment.setLeggings(itemChance.getItem());
-                equipment.setLeggingsDropChance(itemChance.getDropChance());
+            equipment.setLeggings(itemChance.getItem());
+            equipment.setLeggingsDropChance(itemChance.getDropChance());
         }), "random-leggings");
         register(input -> new RandomItemEquipmentModifier(input.value, (itemChance, equipment) -> {
-                equipment.setBoots(itemChance.getItem());
-                equipment.setBootsDropChance(itemChance.getDropChance());
+            equipment.setBoots(itemChance.getItem());
+            equipment.setBootsDropChance(itemChance.getDropChance());
         }), "random-boots");
         register(input -> new RandomItemEquipmentModifier(input.value, (itemChance, equipment) -> {
-                equipment.setItemInMainHand(itemChance.getItem());
-                equipment.setItemInMainHandDropChance(itemChance.getDropChance());
+            equipment.setItemInMainHand(itemChance.getItem());
+            equipment.setItemInMainHandDropChance(itemChance.getDropChance());
         }), "random-main-hand");
         register(input -> new RandomItemEquipmentModifier(input.value, (itemChance, equipment) -> {
-                equipment.setItemInOffHand(itemChance.getItem());
-                equipment.setItemInOffHandDropChance(itemChance.getDropChance());
+            equipment.setItemInOffHand(itemChance.getItem());
+            equipment.setItemInOffHandDropChance(itemChance.getDropChance());
         }), "random-off-hand");
+        register(input -> new RandomFlySpeedModifier(input.value), "random-fly-speed");
+        register(input -> new RandomWalkSpeedModifier(input.value), "random-walk-speed");
     }
 
     public static final class Input {
