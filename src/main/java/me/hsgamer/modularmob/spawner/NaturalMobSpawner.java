@@ -84,7 +84,7 @@ public class NaturalMobSpawner implements MobSpawner, Listener {
         }
     }
 
-    @EventHandler
+    @EventHandler(ignoreCancelled = true)
     public void onEntitySpawn(CreatureSpawnEvent event) {
         if (entityType == null) return;
         if (event.getEntityType() != entityType) return;
