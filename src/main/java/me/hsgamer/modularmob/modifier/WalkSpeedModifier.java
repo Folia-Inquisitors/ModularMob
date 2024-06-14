@@ -12,7 +12,6 @@ public class WalkSpeedModifier extends NumberMobModifier implements LivingMobMod
 
     @Override
     public void modify(LivingEntity entity) {
-        double speed = this.value.doubleValue();
         entity.getAttribute(Attribute.GENERIC_MOVEMENT_SPEED).setBaseValue(value.doubleValue());
     }
 }
