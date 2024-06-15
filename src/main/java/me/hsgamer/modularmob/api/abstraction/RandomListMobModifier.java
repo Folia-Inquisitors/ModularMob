@@ -32,13 +32,27 @@ public abstract class RandomListMobModifier<R, V> implements MobModifier {
         }
     }
 
+    private int getChance(R rawValue, V entity) {
+        if (entity instanceof Chance) {
+            return ((Chance) entity).getChance();
+        } else {
+            return getChance(rawValue);
+        }
+    }
+
     protected abstract Optional<R> getRawValue(Object value);
 
-    protected abstract int getChance(R rawValue, V entity);
+    protected int getChance(R rawValue) {
+        return 1;
+    }
 
     protected abstract V getEntity(R rawValue);
 
     protected V getValue() {
         return collection.get();
+    }
+
+    public interface Chance {
+        int getChance();
     }
 }

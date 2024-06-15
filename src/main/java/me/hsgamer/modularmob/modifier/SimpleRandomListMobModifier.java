@@ -21,14 +21,6 @@ public class SimpleRandomListMobModifier extends RandomListMobModifier<Object, M
     }
 
     @Override
-    protected int getChance(Object rawValue, MobModifier entity) {
-        if (entity instanceof Chance) {
-            return ((Chance) entity).getChance();
-        }
-        return 1;
-    }
-
-    @Override
     protected MobModifier getEntity(Object rawValue) {
         return function.apply(rawValue);
     }
@@ -46,9 +38,5 @@ public class SimpleRandomListMobModifier extends RandomListMobModifier<Object, M
     @Override
     public void disable() {
         collection.iterator().forEachRemaining(element -> element.getObject().disable());
-    }
-
-    public interface Chance {
-        int getChance();
     }
 }

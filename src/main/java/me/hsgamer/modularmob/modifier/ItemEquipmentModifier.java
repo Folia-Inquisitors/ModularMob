@@ -3,6 +3,7 @@ package me.hsgamer.modularmob.modifier;
 import com.cryptomorin.xseries.XItemStack;
 import me.hsgamer.hscore.common.MapUtils;
 import me.hsgamer.modularmob.api.abstraction.LivingMobModifier;
+import me.hsgamer.modularmob.api.abstraction.RandomListMobModifier;
 import org.bukkit.Material;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.EntityEquipment;
@@ -12,7 +13,7 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
 
-public class ItemEquipmentModifier implements LivingMobModifier, SimpleRandomListMobModifier.Chance {
+public class ItemEquipmentModifier implements LivingMobModifier, RandomListMobModifier.Chance {
     private final int chance;
     private final float dropChance;
     private final ItemStack item;
