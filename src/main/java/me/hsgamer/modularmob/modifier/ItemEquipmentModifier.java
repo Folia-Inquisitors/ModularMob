@@ -33,7 +33,7 @@ public class ItemEquipmentModifier implements LivingMobModifier, RandomListMobMo
         EntityEquipment equipment = entity.getEquipment();
         if (equipment == null) return;
 
-        if (!item.getType().isAir()) return;
+        if (item.getType().isAir()) return;
 
         switch (slot) {
             case MAIN_HAND:
