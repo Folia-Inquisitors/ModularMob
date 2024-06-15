@@ -13,12 +13,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 
 public class SimpleMobFactory extends BaseMobFactory {
     private final List<MobModifier> mobModifiers;
+    private final ModularMob plugin;
 
     public SimpleMobFactory(ModularMob plugin, MobFactoryBuilder.Input input) {
         super(input);
+        this.plugin = plugin;
         Config config = input.config;
         String name = input.mobName;
 
@@ -48,6 +51,12 @@ public class SimpleMobFactory extends BaseMobFactory {
     @Override
     public void modify(Entity entity) {
         if (entityType != null && entity.getType() != entityType) return;
-        mobModifiers.forEach(modifier -> modifier.modify(entity));
+        mobModifiers.forEach(modifier -> {
+            try {
+                modifier.modify(entity);
+            } catch (Exception e) {
+                plugin.getLogger().log(Level.WARNING, "Error occurred while modifying entity", e);
+            }
+        });
     }
 }
