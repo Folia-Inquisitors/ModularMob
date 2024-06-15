@@ -17,6 +17,7 @@ public class MobModifierBuilder extends Builder<MobModifierBuilder.Input, MobMod
         register(input -> new FlySpeedModifier(input.value), "fly-speed");
         register(input -> new WalkSpeedModifier(input.value), "walk-speed");
         register(input -> new DamageModifier(input.value), "damage");
+        register(input -> new BossBarModifier(input.value), "boss-bar");
         register(input -> new ItemEquipmentModifier(input.value, ItemEquipmentModifier.Slot.HELMET), "helmet");
         register(input -> new ItemEquipmentModifier(input.value, ItemEquipmentModifier.Slot.CHESTPLATE), "chestplate");
         register(input -> new ItemEquipmentModifier(input.value, ItemEquipmentModifier.Slot.LEGGINGS), "leggings");
