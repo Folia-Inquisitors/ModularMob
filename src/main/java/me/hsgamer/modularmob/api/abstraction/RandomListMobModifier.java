@@ -1,16 +1,21 @@
 package me.hsgamer.modularmob.api.abstraction;
 
 import com.lewdev.probabilitylib.ProbabilityCollection;
+import me.hsgamer.modularmob.api.MobLoadable;
 import me.hsgamer.modularmob.api.MobModifier;
 
 import java.util.Optional;
 
 public abstract class RandomListMobModifier<R, V> implements MobModifier {
-    protected final ProbabilityCollection<V> collection;
+    protected final ProbabilityCollection<V> collection = new ProbabilityCollection<>();
+    private final Object value;
 
     protected RandomListMobModifier(Object value) {
-        this.collection = new ProbabilityCollection<>();
+        this.value = value;
+    }
 
+    @Override
+    public void enable() {
         if (value instanceof Iterable) {
             for (Object o : (Iterable<?>) value) {
                 Optional<R> optionalR = getRawValue(o);
@@ -30,6 +35,24 @@ public abstract class RandomListMobModifier<R, V> implements MobModifier {
                 collection.add(entity, chance);
             }
         }
+
+        collection.iterator().forEachRemaining(element -> {
+            V entity = element.getObject();
+            if (entity instanceof MobLoadable) {
+                ((MobLoadable) entity).enable();
+            }
+        });
+    }
+
+    @Override
+    public void disable() {
+        collection.iterator().forEachRemaining(element -> {
+            V entity = element.getObject();
+            if (entity instanceof MobLoadable) {
+                ((MobLoadable) entity).disable();
+            }
+        });
+        collection.clear();
     }
 
     private int getChance(R rawValue, V entity) {

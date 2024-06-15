@@ -17,7 +17,7 @@ public class SimpleRandomListMobModifier extends RandomListMobModifier<Object, M
 
     @Override
     protected Optional<Object> getRawValue(Object value) {
-        return Optional.empty();
+        return Optional.of(value);
     }
 
     @Override
@@ -28,15 +28,5 @@ public class SimpleRandomListMobModifier extends RandomListMobModifier<Object, M
     @Override
     public void modify(Entity entity) {
         getValue().modify(entity);
-    }
-
-    @Override
-    public void enable() {
-        collection.iterator().forEachRemaining(element -> element.getObject().enable());
-    }
-
-    @Override
-    public void disable() {
-        collection.iterator().forEachRemaining(element -> element.getObject().disable());
     }
 }
