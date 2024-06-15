@@ -3,13 +3,14 @@ package me.hsgamer.modularmob.modifier;
 import com.cryptomorin.xseries.XEntity;
 import me.hsgamer.hscore.common.MapUtils;
 import me.hsgamer.modularmob.api.MobModifier;
+import me.hsgamer.modularmob.api.abstraction.RandomListMobModifier;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.MemoryConfiguration;
 import org.bukkit.entity.Entity;
 
 import java.util.Map;
 
-public class XMobModifier implements MobModifier {
+public class XMobModifier implements MobModifier, RandomListMobModifier.Chance {
     private final ConfigurationSection section;
 
     public XMobModifier(Object value) {
@@ -41,5 +42,10 @@ public class XMobModifier implements MobModifier {
     @Override
     public void modify(Entity entity) {
         XEntity.edit(entity, section);
+    }
+
+    @Override
+    public int getChance() {
+        return section.getInt("chance", 1);
     }
 }

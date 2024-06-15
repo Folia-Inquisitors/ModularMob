@@ -7,13 +7,13 @@ import me.hsgamer.modularmob.modifier.*;
 
 public class MobModifierBuilder extends Builder<MobModifierBuilder.Input, MobModifier> {
     public MobModifierBuilder(ModularMob plugin) {
+        register(input -> new XMobModifier(input.value), "xmob", "xentity", "x");
         register(input -> new NameModifier(input.value), "name");
         register(input -> new HealthModifier(input.value), "health");
         register(input -> new GlowingModifier(input.value), "glowing");
         register(input -> new GravityModifier(input.value), "gravity");
         register(input -> new InvulnerableModifier(input.value), "invulnerable");
         register(input -> new SilentModifier(input.value), "silent");
-        register(input -> new XMobModifier(input.value), "xmob", "xentity", "x");
         register(input -> new FlySpeedModifier(input.value), "fly-speed");
         register(input -> new WalkSpeedModifier(input.value), "walk-speed");
         register(input -> new DamageModifier(input.value), "damage");
@@ -24,6 +24,7 @@ public class MobModifierBuilder extends Builder<MobModifierBuilder.Input, MobMod
         register(input -> new ItemEquipmentModifier(input.value, ItemEquipmentModifier.Slot.MAIN_HAND), "main-hand");
         register(input -> new ItemEquipmentModifier(input.value, ItemEquipmentModifier.Slot.OFF_HAND), "off-hand");
 
+        register(input -> new SimpleRandomListMobModifier(input.value, XMobModifier::new), "random-xmob", "random-xentity", "random-x");
         register(input -> new SimpleRandomNumberMobModifier(input.value, HealthModifier::new), "random-health");
         register(input -> new SimpleRandomNumberMobModifier(input.value, FlySpeedModifier::new), "random-fly-speed");
         register(input -> new SimpleRandomNumberMobModifier(input.value, WalkSpeedModifier::new), "random-walk-speed");
