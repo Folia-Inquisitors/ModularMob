@@ -17,35 +17,23 @@ public class MobModifierBuilder extends Builder<MobModifierBuilder.Input, MobMod
         register(input -> new FlySpeedModifier(input.value), "fly-speed");
         register(input -> new WalkSpeedModifier(input.value), "walk-speed");
         register(input -> new DamageModifier(input.value), "damage");
+        register(input -> new ItemEquipmentModifier(input.value, ItemEquipmentModifier.Slot.HELMET), "helmet");
+        register(input -> new ItemEquipmentModifier(input.value, ItemEquipmentModifier.Slot.CHESTPLATE), "chestplate");
+        register(input -> new ItemEquipmentModifier(input.value, ItemEquipmentModifier.Slot.LEGGINGS), "leggings");
+        register(input -> new ItemEquipmentModifier(input.value, ItemEquipmentModifier.Slot.BOOTS), "boots");
+        register(input -> new ItemEquipmentModifier(input.value, ItemEquipmentModifier.Slot.MAIN_HAND), "main-hand");
+        register(input -> new ItemEquipmentModifier(input.value, ItemEquipmentModifier.Slot.OFF_HAND), "off-hand");
 
         register(input -> new SimpleRandomNumberMobModifier(input.value, HealthModifier::new), "random-health");
-        register(input -> new RandomItemEquipmentModifier(input.value, (itemChance, equipment) -> {
-            equipment.setHelmet(itemChance.getItem());
-            equipment.setHelmetDropChance(itemChance.getDropChance());
-        }), "random-helmet");
-        register(input -> new RandomItemEquipmentModifier(input.value, (itemChance, equipment) -> {
-            equipment.setChestplate(itemChance.getItem());
-            equipment.setChestplateDropChance(itemChance.getDropChance());
-        }), "random-chestplate");
-        register(input -> new RandomItemEquipmentModifier(input.value, (itemChance, equipment) -> {
-            equipment.setLeggings(itemChance.getItem());
-            equipment.setLeggingsDropChance(itemChance.getDropChance());
-        }), "random-leggings");
-        register(input -> new RandomItemEquipmentModifier(input.value, (itemChance, equipment) -> {
-            equipment.setBoots(itemChance.getItem());
-            equipment.setBootsDropChance(itemChance.getDropChance());
-        }), "random-boots");
-        register(input -> new RandomItemEquipmentModifier(input.value, (itemChance, equipment) -> {
-            equipment.setItemInMainHand(itemChance.getItem());
-            equipment.setItemInMainHandDropChance(itemChance.getDropChance());
-        }), "random-main-hand");
-        register(input -> new RandomItemEquipmentModifier(input.value, (itemChance, equipment) -> {
-            equipment.setItemInOffHand(itemChance.getItem());
-            equipment.setItemInOffHandDropChance(itemChance.getDropChance());
-        }), "random-off-hand");
         register(input -> new SimpleRandomNumberMobModifier(input.value, FlySpeedModifier::new), "random-fly-speed");
         register(input -> new SimpleRandomNumberMobModifier(input.value, WalkSpeedModifier::new), "random-walk-speed");
         register(input -> new SimpleRandomNumberMobModifier(input.value, DamageModifier::new), "random-damage");
+        register(input -> new SimpleRandomListMobModifier(input.value, o -> new ItemEquipmentModifier(o, ItemEquipmentModifier.Slot.HELMET)), "random-helmet");
+        register(input -> new SimpleRandomListMobModifier(input.value, o -> new ItemEquipmentModifier(o, ItemEquipmentModifier.Slot.CHESTPLATE)), "random-chestplate");
+        register(input -> new SimpleRandomListMobModifier(input.value, o -> new ItemEquipmentModifier(o, ItemEquipmentModifier.Slot.LEGGINGS)), "random-leggings");
+        register(input -> new SimpleRandomListMobModifier(input.value, o -> new ItemEquipmentModifier(o, ItemEquipmentModifier.Slot.BOOTS)), "random-boots");
+        register(input -> new SimpleRandomListMobModifier(input.value, o -> new ItemEquipmentModifier(o, ItemEquipmentModifier.Slot.MAIN_HAND)), "random-main-hand");
+        register(input -> new SimpleRandomListMobModifier(input.value, o -> new ItemEquipmentModifier(o, ItemEquipmentModifier.Slot.OFF_HAND)), "random-off-hand");
     }
 
     public static final class Input {
