@@ -6,6 +6,10 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.LivingEntity;
 
 public class FlySpeedModifier extends NumberMobModifier implements LivingMobModifier {
+    public FlySpeedModifier(Number value) {
+        super(value);
+    }
+
     public FlySpeedModifier(Object value) {
         super(value);
     }

@@ -17,7 +17,7 @@ public class MobModifierBuilder extends Builder<MobModifierBuilder.Input, MobMod
         register(input -> new FlySpeedModifier(input.value), "fly-speed");
         register(input -> new WalkSpeedModifier(input.value), "walk-speed");
 
-        register(input -> new RandomHealthModifier(input.value), "random-health");
+        register(input -> new SimpleRandomNumberMobModifier(input.value, HealthModifier::new), "random-health");
         register(input -> new RandomItemEquipmentModifier(input.value, (itemChance, equipment) -> {
             equipment.setHelmet(itemChance.getItem());
             equipment.setHelmetDropChance(itemChance.getDropChance());
@@ -42,8 +42,8 @@ public class MobModifierBuilder extends Builder<MobModifierBuilder.Input, MobMod
             equipment.setItemInOffHand(itemChance.getItem());
             equipment.setItemInOffHandDropChance(itemChance.getDropChance());
         }), "random-off-hand");
-        register(input -> new RandomFlySpeedModifier(input.value), "random-fly-speed");
-        register(input -> new RandomWalkSpeedModifier(input.value), "random-walk-speed");
+        register(input -> new SimpleRandomNumberMobModifier(input.value, FlySpeedModifier::new), "random-fly-speed");
+        register(input -> new SimpleRandomNumberMobModifier(input.value, WalkSpeedModifier::new), "random-walk-speed");
     }
 
     public static final class Input {

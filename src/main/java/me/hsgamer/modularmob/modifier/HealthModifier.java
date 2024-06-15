@@ -6,6 +6,10 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.LivingEntity;
 
 public class HealthModifier extends NumberMobModifier implements LivingMobModifier {
+    public HealthModifier(Number value) {
+        super(value);
+    }
+
     public HealthModifier(Object value) {
         super(value);
     }

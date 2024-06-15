@@ -7,6 +7,10 @@ import java.util.Objects;
 public abstract class NumberMobModifier implements MobModifier {
     protected final Number value;
 
+    protected NumberMobModifier(Number value) {
+        this.value = value;
+    }
+
     protected NumberMobModifier(Object value) {
         double number;
         try {
