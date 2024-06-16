@@ -1,0 +1,24 @@
+entity: zombie
+name: "&c&lTest Zombie"
+
+random-health: 20-100
+random-speed: 1-10
+
+random-helmet:
+- chance: 10
+  item:
+    material: DIAMOND_HELMET
+- chance: 5
+  item:
+    material: GOLDEN_HELMET
+
+random-main-hand:
+- chance: 10
+  item:
+    material: DIAMOND_SWORD
+    enchants:
+      SHARPNESS: 3
+- chance: 5
+  item:
+    material: IRON_SWORD
+- chance: 5

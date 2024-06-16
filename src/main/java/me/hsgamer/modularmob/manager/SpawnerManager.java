@@ -24,6 +24,7 @@ public class SpawnerManager implements Loadable {
         File spawnersFolder = new File(plugin.getDataFolder(), "spawners");
         if (!spawnersFolder.exists()) {
             spawnersFolder.mkdirs();
+            plugin.saveResource("spawners/zombie.yml", false);
         }
 
         MobSpawnerBuilder mobSpawnerBuilder = plugin.get(MobSpawnerBuilder.class);

@@ -22,6 +22,8 @@ public class MobManager implements Loadable {
         File mobFolder = new File(plugin.getDataFolder(), "mobs");
         if (!mobFolder.exists()) {
             mobFolder.mkdirs();
+            plugin.saveResource("mobs/zombie.yml", false);
+            plugin.saveResource("mobs/super-zombie.yml", false);
         }
 
         MobFactoryBuilder mobFactoryBuilder = plugin.get(MobFactoryBuilder.class);

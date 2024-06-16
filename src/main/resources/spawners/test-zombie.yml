@@ -1,0 +1,4 @@
+entity: zombie
+chance:
+- 50 zombie.yml
+- 5 super-zombie.yml

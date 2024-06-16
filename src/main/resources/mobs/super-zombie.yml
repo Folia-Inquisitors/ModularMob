@@ -1,0 +1,49 @@
+entity: zombie
+name: "&a&lSuper Zombie"
+
+health: 200
+walk-speed: 2
+damage: 6
+glowing: true
+
+helmet:
+  drop-chance: 0.1
+  item:
+    material: NETHERITE_HELMET
+    enchants:
+      UNBREAKING: 2
+chestplate:
+  drop-chance: 0.1
+  item:
+    material: NETHERITE_CHESTPLATE
+    enchants:
+      UNBREAKING: 2
+leggings:
+  drop-chance: 0.1
+  item:
+    material: NETHERITE_LEGGINGS
+    enchants:
+      UNBREAKING: 2
+boots:
+  drop-chance: 0.1
+  item:
+    material: NETHERITE_BOOTS
+    enchants:
+      UNBREAKING: 2
+      FROST_WALKER: 1
+main-hand:
+  drop-chance: 0.1
+  item:
+    material: NETHERITE_SWORD
+    enchants:
+      UNBREAKING: 2
+      SHARPNESS: 2
+      FIRE_ASPECT: 1
+off-hand:
+  drop-chance: 0.1
+  item:
+    material: PAPER
+
+x:
+  effects:
+  - "POISON, 99999, 2"
