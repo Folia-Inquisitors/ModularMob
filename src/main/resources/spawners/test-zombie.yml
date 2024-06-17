@@ -1,4 +1,5 @@
 entity: zombie
 chance:
+- 70 natural
 - 50 zombie.yml
 - 5 super-zombie.yml
