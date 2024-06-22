@@ -4,6 +4,7 @@ import com.cryptomorin.xseries.XItemStack;
 import me.hsgamer.hscore.common.MapUtils;
 import me.hsgamer.modularmob.api.abstraction.LivingMobModifier;
 import me.hsgamer.modularmob.api.abstraction.RandomListMobModifier;
+import me.hsgamer.modularmob.util.ConfigUtil;
 import org.bukkit.Material;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.inventory.EntityEquipment;
@@ -12,6 +13,7 @@ import org.bukkit.inventory.ItemStack;
 import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
+import java.util.function.Function;
 
 public class ItemEquipmentModifier implements LivingMobModifier, RandomListMobModifier.Chance {
     private final int chance;
@@ -25,7 +27,10 @@ public class ItemEquipmentModifier implements LivingMobModifier, RandomListMobMo
 
         chance = Optional.ofNullable(map.get("chance")).map(String::valueOf).map(Integer::parseInt).orElse(1);
         dropChance = Optional.ofNullable(map.get("drop-chance")).map(String::valueOf).map(Float::parseFloat).orElse(0F);
-        item = Optional.ofNullable(map.get("item")).flatMap(MapUtils::castOptionalStringObjectMap).map(XItemStack::deserialize).orElseGet(() -> new ItemStack(Material.AIR));
+        item = Optional.ofNullable(map.get("item"))
+                .flatMap(MapUtils::castOptionalStringObjectMap)
+                .map(itemMap -> XItemStack.edit(new ItemStack(Material.STONE), ConfigUtil.mapToConfigSection(itemMap), Function.identity(), null))
+                .orElseGet(() -> new ItemStack(Material.AIR));
     }
 
     @Override
