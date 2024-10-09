@@ -11,7 +11,7 @@ mvn clean install
  
 ## Description
 
-This plugin allows players to custimze almost every aspect of mobs that spawn in, and give the spawning rates of custom mobs variability on how often they spawn in. This is meant to be a simple plugin for servers. It is highly optimized and heavily tested. Feel free to constribute.
+This plugin allows players to customize almost every aspect of mobs, and set rates for how often they spawn in. This is meant to be a simple plugin for servers. It is highly optimized and heavily tested. Feel free to constribute.
 
 ### Config for the spawner folder
 
