@@ -1,5 +1,4 @@
 # ModulerMob
-Website: https://www.spigotmc.org/resources/yatpa.115050/
 
 # Official Discord 
 
