@@ -9,8 +9,6 @@ import me.hsgamer.modularmob.factory.SimpleMobFactory;
 import me.hsgamer.modularmob.factory.XMobFactory;
 
 public class MobFactoryBuilder extends FunctionalMassBuilder<MobFactoryBuilder.Input, MobFactory> {
-    private static final PathString TYPE = new PathString("type", null);
-
     public MobFactoryBuilder(ModularMob plugin) {
         register(input -> new SimpleMobFactory(plugin, input), "simple");
         register(XMobFactory::new, "xmob");
@@ -18,7 +16,7 @@ public class MobFactoryBuilder extends FunctionalMassBuilder<MobFactoryBuilder.I
 
     @Override
     protected String getType(Input input) {
-        return input.config.getInstance(TYPE, "simple", String.class);
+        return input.config.getInstance(String.class, "simple", PathString.asArray("type"));
     }
 
     public static final class Input {

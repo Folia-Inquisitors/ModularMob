@@ -36,8 +36,8 @@ public abstract class RandomListMobModifier<R, V> implements MobModifier {
             }
         }
 
-        collection.iterator().forEachRemaining(element -> {
-            V entity = element.getObject();
+        collection.stream().forEach(element -> {
+            V entity = element.getKey();
             if (entity instanceof MobLoadable) {
                 ((MobLoadable) entity).enable();
             }
@@ -46,8 +46,8 @@ public abstract class RandomListMobModifier<R, V> implements MobModifier {
 
     @Override
     public void disable() {
-        collection.iterator().forEachRemaining(element -> {
-            V entity = element.getObject();
+        collection.stream().forEach(element -> {
+            V entity = element.getKey();
             if (entity instanceof MobLoadable) {
                 ((MobLoadable) entity).disable();
             }

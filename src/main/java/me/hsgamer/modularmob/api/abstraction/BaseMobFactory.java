@@ -16,7 +16,7 @@ public abstract class BaseMobFactory implements MobFactory {
 
     public BaseMobFactory(MobFactoryBuilder.Input input) {
         EntityType entityType = null;
-        String entityTypeStr = input.config.getInstance(new PathString("entity"), String.class);
+        String entityTypeStr = input.config.getInstance(String.class, PathString.asArray("entity"));
         if (entityTypeStr != null) {
             try {
                 entityType = EntityType.valueOf(entityTypeStr.toUpperCase(Locale.ROOT).trim());

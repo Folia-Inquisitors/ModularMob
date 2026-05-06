@@ -3,7 +3,6 @@ package me.hsgamer.modularmob.spawner;
 import com.lewdev.probabilitylib.ProbabilityCollection;
 import me.hsgamer.hscore.common.CollectionUtils;
 import me.hsgamer.hscore.config.Config;
-import me.hsgamer.hscore.config.PathString;
 import me.hsgamer.modularmob.ModularMob;
 import me.hsgamer.modularmob.api.MobFactory;
 import me.hsgamer.modularmob.api.MobSpawner;
@@ -20,9 +19,6 @@ import java.util.*;
 import java.util.function.Consumer;
 
 public class NaturalMobSpawner implements MobSpawner, Listener {
-    private static final PathString ENTITY_PATH = new PathString("entity");
-    private static final PathString CHANCE_PATH = new PathString("chance");
-    private static final PathString REASON_PATH = new PathString("reason");
     private final ModularMob plugin;
     private final EntityType entityType;
     private final List<CreatureSpawnEvent.SpawnReason> reasons;
@@ -32,7 +28,7 @@ public class NaturalMobSpawner implements MobSpawner, Listener {
         this.plugin = plugin;
         this.spawnerChances = new ProbabilityCollection<>();
 
-        this.entityType = Optional.ofNullable(config.getNormalized(ENTITY_PATH))
+        this.entityType = Optional.ofNullable(config.getNormalized("entity"))
                 .map(Objects::toString)
                 .flatMap(s -> {
                     try {
@@ -44,7 +40,7 @@ public class NaturalMobSpawner implements MobSpawner, Listener {
                 .orElse(null);
 
         MobManager mobManager = plugin.get(MobManager.class);
-        for (String spawnChance : CollectionUtils.createStringListFromObject(config.getNormalized(CHANCE_PATH))) {
+        for (String spawnChance : CollectionUtils.createStringListFromObject(config.getNormalized("chance"))) {
             String[] split = spawnChance.split(" ", 2);
             if (split.length == 2) {
                 int chance;
@@ -75,7 +71,7 @@ public class NaturalMobSpawner implements MobSpawner, Listener {
         }
 
         this.reasons = new ArrayList<>();
-        for (String reason : CollectionUtils.createStringListFromObject(config.getNormalized(REASON_PATH))) {
+        for (String reason : CollectionUtils.createStringListFromObject(config.getNormalized("reason"))) {
             try {
                 reasons.add(CreatureSpawnEvent.SpawnReason.valueOf(reason.toUpperCase(Locale.ROOT).trim()));
             } catch (IllegalArgumentException e) {

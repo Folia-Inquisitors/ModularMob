@@ -28,8 +28,8 @@ public class SimpleMobFactory extends BaseMobFactory {
         MobModifierBuilder mobModifierBuilder = plugin.get(MobModifierBuilder.class);
 
         List<MobModifier> modifiers = new ArrayList<>();
-        for (Map.Entry<PathString, Object> entry : config.getNormalizedValues(false).entrySet()) {
-            String key = PathString.toPath(entry.getKey());
+        for (Map.Entry<String[], Object> entry : config.getNormalizedValues(false).entrySet()) {
+            String key = PathString.joinDefault(entry.getKey());
             Object value = entry.getValue();
             if (!key.equalsIgnoreCase("entity")) {
                 mobModifierBuilder.build(key, new MobModifierBuilder.Input(name, value)).ifPresent(modifiers::add);
